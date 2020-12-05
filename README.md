@@ -16,4 +16,7 @@ decrypt tool for 360se_
 
 这个脚本的意义：纪念看雪第一篇精华  
 
+![image](https://github.com/adezz/360se_Browser_getpass/blob/master/pic/pic1.png)
+
+
 
